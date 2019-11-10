@@ -1,7 +1,6 @@
 package test
 
 import (
-	"os/exec"
 	"testing"
 
 	"github.com/muhammadharis/goffmpeg/transcoder"
@@ -217,29 +216,6 @@ func TestTranscodingWMV(t *testing.T) {
 	trans := new(transcoder.Transcoder)
 
 	err := trans.Initialize(inputPath, outputPath)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	done := trans.Run(false)
-	err = <-done
-	if err != nil {
-		t.Error(err)
-		return
-	}
-}
-
-func TestTranscodingInputPipe(t *testing.T) {
-
-	// Tests pipe with input mpeg, output mp4 using cat command for pipe-in
-	var outputPath = "/data/out/testmp4.mp4"
-
-	trans := new(transcoder.Transcoder)
-	err := trans.InitializeEmptyTranscoder()
-	trans.SetOutputPath(outputPath)
-	trans.CreateInputPipe(exec.Command("cat", "/data/testmpeg"))
-
 	if err != nil {
 		t.Error(err)
 		return
