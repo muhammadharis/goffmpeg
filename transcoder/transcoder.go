@@ -137,9 +137,7 @@ func (t *Transcoder) CreateOutputPipe(containerFormat string) (*io.PipeReader, e
 	}
 	t.mediafile.SetOutputFormat(containerFormat)
 
-	if containerFormat == "mp4" {
-		t.mediafile.SetMovFlags("frag_keyframe")
-	}
+	t.mediafile.SetMovFlags("frag_keyframe")
 	outputPipeReader, outputPipeWriter := io.Pipe()
 	t.mediafile.SetOutputPipe(true)
 	t.mediafile.SetOutputPipeReader(outputPipeReader)
