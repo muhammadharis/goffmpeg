@@ -192,18 +192,6 @@ func (t *Transcoder) Initialize(inputPath string, outputPath string) error {
 
 }
 
-func deepEqual(s1 []string, s2 []string) bool {
-	if len(s1) != len(s2) {
-		return false
-	}
-	for i, ch := range s1 {
-		if ch != s2[i] {
-			return false
-		}
-	}
-	return true
-}
-
 // Run Starts the transcoding process
 func (t *Transcoder) Run(progress bool) <-chan error {
 	done := make(chan error)
